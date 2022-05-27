@@ -7,7 +7,12 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack serve --node-env development",
     "build": "webpack --node-env production",
-    "lint": "eslint --ext .js,.jsx ./src"
+    "lint": "eslint --ext .js,.jsx ./src",
+    "lint:fix": "eslint --fix --ext .js,.jsx ./src",
+    "prettify:check": "prettier --check ./src",
+    "prettify": "prettier --write ./src",
+    "prepare": "husky install",
+    "precommit": "npm run prettify && npm run lint:fix"
   },
   "repository": {
     "type": "git",
@@ -37,6 +42,7 @@
     "eslint-plugin-react-hooks": "^4.5.0",
     "eslint-webpack-plugin": "^3.1.1",
     "html-webpack-plugin": "^5.5.0",
+    "husky": "^8.0.1",
     "mini-css-extract-plugin": "^2.6.0",
     "prettier": "2.6.2",
     "sass": "^1.52.1",
