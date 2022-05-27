@@ -1,0 +1,13 @@
+dist/
+dev/
+node_modules/
+package.json
+package-lock.json
+.babelrc
+.eslintrc
+.prettierrc
+README.md
+webpack.config.dev.js
+webpack.config.js
+webpack.config.prod.js
+*.html
