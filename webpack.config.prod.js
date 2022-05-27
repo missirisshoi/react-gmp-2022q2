@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const ESLintPlugin = require('eslint-webpack-plugin');
 
 module.exports = {
   mode: 'production',
@@ -15,17 +16,21 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
+        test: /\.jsx?$/i,
         exclude: /node_modules/,
         loader: 'babel-loader'
       },
       {
-        test: /\.css$/,
+        test: /\.css$/i,
         use: [MiniCssExtractPlugin.loader, 'css-loader']
       },
       {
-        test: /\.s[ac]ss$/,
+        test: /\.s[ac]ss$/i,
         use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
+      },
+      {
+        test: /\.(?:ico|gif|png|jpg|jpeg|webp)$/i,
+        type: 'asset/resource',
       }
     ]
   },
@@ -34,6 +39,7 @@ module.exports = {
       template: './src/index.html',
       minify: true
     }),
-    new MiniCssExtractPlugin()
+    new MiniCssExtractPlugin(),
+    new ESLintPlugin()
   ]
 };
