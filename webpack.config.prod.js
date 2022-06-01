@@ -26,7 +26,15 @@ module.exports = {
       },
       {
         test: /\.s[ac]ss$/i,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
+        use: [MiniCssExtractPlugin.loader, {
+          loader: 'css-loader',
+          options: {
+            importLoaders: 1,
+            modules: {
+              localIdentName: '[name]__[local]___[hash:base64:5]'
+            }
+          },
+        }, 'sass-loader']
       },
       {
         test: /\.(?:ico|gif|png|jpg|jpeg|webp)$/i,
