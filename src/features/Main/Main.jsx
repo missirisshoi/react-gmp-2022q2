@@ -1,8 +1,13 @@
 import styles from './Main.module.scss';
-import MoviesList from './MoviesList/MoviesList';
+import MoviesControls from './MoviesControls';
+import MoviesList from './MoviesList';
+import SearchResults from './SearchResults';
 
 const Main = () => (
   <div className={styles.main_wrapper}>
+    <MoviesControls />
+    <hr className={styles.main_hr} />
+    <SearchResults />
     <MoviesList />
   </div>
 );

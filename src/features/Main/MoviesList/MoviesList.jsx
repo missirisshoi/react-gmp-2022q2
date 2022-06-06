@@ -1,4 +1,4 @@
-import MovieCard from './MovieCard/MovieCard';
+import MovieCard from './MovieCard';
 import styles from './MoviesList.module.scss';
 
 const movies = [
