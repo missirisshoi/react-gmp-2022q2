@@ -32,6 +32,8 @@
     "max-len": ["error", { "code": 80, "tabWidth": 4 }],
     "react/jsx-filename-extension": ["warn", { "extensions": [".js", ".jsx"] }],
     "react/react-in-jsx-scope": "off",
-    "react/function-component-definition": "off"
+    "react/function-component-definition": "off",
+    "import/no-dynamic-require": "off",
+    "global-require": "off"
   }
 }

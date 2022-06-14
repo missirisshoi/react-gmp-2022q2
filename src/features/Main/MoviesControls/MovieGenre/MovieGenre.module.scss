@@ -1,0 +1,11 @@
+.genre_item {
+  text-transform: uppercase;
+}
+
+.genre_item_active {
+  border-bottom: 3px solid #f65261;
+  padding-bottom: 20px;
+  margin-bottom: -2px;
+  z-index: 2;
+  text-transform: uppercase;
+}

@@ -1,0 +1,25 @@
+.movie_controls_wrapper {
+  width: 100%;
+  max-width: 1080px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.movie_genre_list {
+  display: flex;
+  gap: 30px;
+}
+
+.sort_span {
+  text-transform: uppercase;
+  margin-right: 30px;
+  opacity: 60%;
+}
+
+.sort_select {
+  background: none;
+  border: none;
+  color: #848484;
+  text-transform: uppercase;
+  font-size: 16px;
+}

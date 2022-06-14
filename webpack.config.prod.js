@@ -8,7 +8,8 @@ module.exports = {
   entry: './src/index.js',
   output: {
     filename: 'main.js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'dist'),
+    clean: true
   },
   resolve: {
     extensions: ['.js', '.jsx']
@@ -39,6 +40,9 @@ module.exports = {
       {
         test: /\.(?:ico|gif|png|jpg|jpeg|webp)$/i,
         type: 'asset/resource',
+        generator: {
+          filename: 'public/img/[name]___[hash:5][ext]'
+        }
       }
     ]
   },

@@ -1,0 +1,17 @@
+.main_wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px 60px 60px;
+  color: #ffffff;
+  background-color: #232323;
+}
+
+.main_hr {
+  width: 100%;
+  max-width: 1080px;
+  height: 3px;
+  background: #424242;
+  border: none;
+  margin-bottom: 20px;
+}
