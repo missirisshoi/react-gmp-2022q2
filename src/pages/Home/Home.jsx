@@ -1,6 +1,6 @@
-import ErrorBoundary from '../../features/ErrorBoundary';
+import ErrorBoundary from '../../base/ErrorBoundary';
 import Header from '../../features/Header';
-import Hr from '../../features/Hr';
+import Hr from '../../base/Hr';
 import Main from '../../features/Main';
 import Footer from '../../features/Footer';
 
