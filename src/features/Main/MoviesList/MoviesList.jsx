@@ -8,6 +8,10 @@ const movies = [
     genre: 'Action & Adventure',
     year: 2004,
     poster: 'pulp_fiction.png',
+    url: 'movie_url',
+    runtime: '120m',
+    overview: 'Movie description',
+    rating: 10,
   },
   {
     id: 2,
@@ -15,6 +19,10 @@ const movies = [
     genre: 'Drama, Biography, Music',
     year: 2003,
     poster: 'bohemian_rhapsody.png',
+    url: 'movie_url',
+    runtime: '120m',
+    overview: 'Movie description',
+    rating: 10,
   },
   {
     id: 3,
@@ -22,6 +30,10 @@ const movies = [
     genre: 'Oscar winning movie',
     year: 1994,
     poster: 'kill_bill_2.png',
+    url: 'movie_url',
+    runtime: '120m',
+    overview: 'Movie description',
+    rating: 10,
   },
   {
     id: 4,
@@ -29,6 +41,10 @@ const movies = [
     genre: 'Action & Adventure',
     year: 2004,
     poster: 'avengers.png',
+    url: 'movie_url',
+    runtime: '120m',
+    overview: 'Movie description',
+    rating: 10,
   },
   {
     id: 5,
@@ -36,6 +52,10 @@ const movies = [
     genre: 'Action & Adventure',
     year: 2003,
     poster: 'inception.png',
+    url: 'movie_url',
+    runtime: '120m',
+    overview: 'Movie description',
+    rating: 10,
   },
   {
     id: 6,
@@ -43,6 +63,10 @@ const movies = [
     genre: 'Oscar winning movie',
     year: 1994,
     poster: 'reservoir_dogs.png',
+    url: 'movie_url',
+    runtime: '120m',
+    overview: 'Movie description',
+    rating: 10,
   },
 ];
 

@@ -7,6 +7,48 @@
   margin-bottom: 15px;
 }
 
+.movie_menu {
+  display: none;
+  position: absolute;
+  transform: rotate(90deg);
+  background-color: #232323;
+  border-radius: 100%;
+  width: 29px;
+  height: 20px;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 10px;
+  margin-left: 280px;
+  margin-top: 10px;
+}
+
+.movie_card:hover .movie_menu {
+  display: flex;
+}
+
+.movie_menu:hover {
+  opacity: 80%;
+  cursor: pointer;
+}
+
+.movie_menu_items {
+  display: none;
+  position: absolute;
+  margin-left: 230px;
+  margin-top: 30px;
+  background-color: #232323;
+  padding: 10px;
+}
+
+.movie_menu_items_shown {
+  display: block;
+}
+
+.movie_menu_item:hover {
+  cursor: pointer;
+  opacity: 60%;
+}
+
 .movie_details {
   display: flex;
   justify-content: space-between;
