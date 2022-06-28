@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Modal from '../../../../base/Modal';
 import styles from './MovieCard.module.scss';
 
-const MovieCard = ({ movie }) => {
+const MovieCard = ({ movie, getMovieId }) => {
   const [showEditModal, setShowEditModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [isMovieMenuOpened, toggleMovieMenu] = useState(false);
@@ -23,37 +23,48 @@ const MovieCard = ({ movie }) => {
   };
 
   return (
-    <div className={styles.movie_card}>
-      <div
-        className={styles.movie_menu}
-        onClick={() => toggleMovieMenu(!isMovieMenuOpened)}
-      >
-        ...
-      </div>
-      <div className={movieMenuItemsCN}>
+    <>
+      <div className={styles.movie_card} onClick={() => getMovieId(movie.id)}>
         <div
-          className={styles.movie_menu_item}
-          onClick={() => handleBtnClick('edit')}
+          className={styles.movie_menu}
+          onClick={(e) => {
+            e.stopPropagation();
+            toggleMovieMenu(!isMovieMenuOpened);
+          }}
         >
-          Edit
+          ...
         </div>
-        <div
-          className={styles.movie_menu_item}
-          onClick={() => handleBtnClick('delete')}
-        >
-          Delete
+        <div className={movieMenuItemsCN}>
+          <div
+            className={styles.movie_menu_item}
+            onClick={(e) => {
+              e.stopPropagation();
+              handleBtnClick('edit');
+            }}
+          >
+            Edit
+          </div>
+          <div
+            className={styles.movie_menu_item}
+            onClick={(e) => {
+              e.stopPropagation();
+              handleBtnClick('delete');
+            }}
+          >
+            Delete
+          </div>
         </div>
+        <img
+          src={require(`../../../../../public/img/posters/${moviePosterURL}`)}
+          alt={movie.title}
+          className={styles.movie_poster}
+        />
+        <div className={styles.movie_details}>
+          <span className={styles.movie_title}>{movie.title}</span>
+          <span className={styles.movie_year}>{movie.year}</span>
+        </div>
+        <div className={styles.movie_genre}>{movie.genre}</div>
       </div>
-      <img
-        src={require(`../../../../../public/img/posters/${moviePosterURL}`)}
-        alt={movie.title}
-        className={styles.movie_poster}
-      />
-      <div className={styles.movie_details}>
-        <span className={styles.movie_title}>{movie.title}</span>
-        <span className={styles.movie_year}>{movie.year}</span>
-      </div>
-      <div className={styles.movie_genre}>{movie.genre}</div>
       <Modal
         headerText="Edit movie"
         showModal={showEditModal}
@@ -165,7 +176,7 @@ const MovieCard = ({ movie }) => {
           Confirm
         </button>
       </Modal>
-    </div>
+    </>
   );
 };
 
@@ -181,6 +192,7 @@ MovieCard.propTypes = {
     overview: PropTypes.string.isRequired,
     rating: PropTypes.number.isRequired,
   }).isRequired,
+  getMovieId: PropTypes.func.isRequired,
 };
 
 export default MovieCard;

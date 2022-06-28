@@ -2,10 +2,10 @@ import PropTypes from 'prop-types';
 import MovieCard from './MovieCard';
 import styles from './MoviesList.module.scss';
 
-const MoviesList = ({ movies }) => (
+const MoviesList = ({ movies, getMovieId }) => (
   <div className={styles.movies_list_wrapper}>
     {movies.map((movie) => (
-      <MovieCard key={movie.id} movie={movie} />
+      <MovieCard key={movie.id} movie={movie} getMovieId={getMovieId} />
     ))}
   </div>
 );
@@ -24,6 +24,7 @@ MoviesList.propTypes = {
       rating: PropTypes.number,
     })
   ).isRequired,
+  getMovieId: PropTypes.func.isRequired,
 };
 
 export default MoviesList;
