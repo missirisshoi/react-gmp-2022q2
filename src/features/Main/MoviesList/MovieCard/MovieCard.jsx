@@ -11,7 +11,9 @@ const MovieCard = ({ movie, getMovieId }) => {
     isMovieMenuOpened ? styles.movie_menu_items_shown : ''
   }`;
 
-  const moviePosterURL = movie.poster ? movie.poster : 'pulp_fiction.png';
+  const moviePosterURL = movie.poster_path
+    ? movie.poster_path
+    : require('../../../../../public/img/posters/pulp_fiction.png');
 
   const handleBtnClick = (type) => {
     toggleMovieMenu(false);
@@ -55,15 +57,19 @@ const MovieCard = ({ movie, getMovieId }) => {
           </div>
         </div>
         <img
-          src={require(`../../../../../public/img/posters/${moviePosterURL}`)}
+          src={moviePosterURL}
           alt={movie.title}
           className={styles.movie_poster}
+          width="322"
+          height="455"
         />
         <div className={styles.movie_details}>
           <span className={styles.movie_title}>{movie.title}</span>
-          <span className={styles.movie_year}>{movie.year}</span>
+          <span className={styles.movie_year}>
+            {movie.release_date?.split('-')[0]}
+          </span>
         </div>
-        <div className={styles.movie_genre}>{movie.genre}</div>
+        <div className={styles.movie_genre}>{movie.genres?.join(', ')}</div>
       </div>
       <Modal
         headerText="Edit movie"
@@ -92,7 +98,7 @@ const MovieCard = ({ movie, getMovieId }) => {
               id="m_year"
               name="m_year"
               className={styles.modal_input}
-              defaultValue={movie.year}
+              defaultValue={movie.release_date?.split('-')[0]}
             />
           </div>
           <div className={styles.form_field_wrapper}>
@@ -116,7 +122,7 @@ const MovieCard = ({ movie, getMovieId }) => {
               id="m_rating"
               name="m_rating"
               className={styles.modal_input}
-              defaultValue={movie.rating}
+              defaultValue={movie.vote_average}
             />
           </div>
           <div className={styles.form_field_wrapper}>
@@ -128,7 +134,7 @@ const MovieCard = ({ movie, getMovieId }) => {
               id="m_genre"
               name="m_genre"
               className={styles.modal_input}
-              defaultValue={movie.genre}
+              defaultValue={movie.genres?.join(', ')}
             />
           </div>
           <div className={styles.form_field_wrapper}>
@@ -184,13 +190,13 @@ MovieCard.propTypes = {
   movie: PropTypes.shape({
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
-    year: PropTypes.number.isRequired,
-    genre: PropTypes.string.isRequired,
-    poster: PropTypes.string.isRequired,
-    url: PropTypes.string.isRequired,
-    runtime: PropTypes.string.isRequired,
+    release_date: PropTypes.string.isRequired,
+    genres: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+    poster_path: PropTypes.string,
+    url: PropTypes.string,
+    runtime: PropTypes.number,
     overview: PropTypes.string.isRequired,
-    rating: PropTypes.number.isRequired,
+    vote_average: PropTypes.number.isRequired,
   }).isRequired,
   getMovieId: PropTypes.func.isRequired,
 };

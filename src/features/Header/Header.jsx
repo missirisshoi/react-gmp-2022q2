@@ -6,7 +6,9 @@ import Logo from '../../base/Logo';
 import SearchIcon from '../../base/SearchIcon';
 
 const Header = ({ movie, isMovieDetailsShown, toggleMovieDetails }) => {
-  const moviePosterURL = movie?.poster || 'pulp_fiction.png';
+  const moviePosterURL = movie.poster_path
+    ? movie.poster_path
+    : require('../../../public/img/posters/pulp_fiction.png');
 
   return (
     <div className={styles.wrapper}>
@@ -18,19 +20,23 @@ const Header = ({ movie, isMovieDetailsShown, toggleMovieDetails }) => {
           </div>
           <div className={styles.movie_detail_wrapper}>
             <img
-              src={require(`../../../public/img/posters/${moviePosterURL}`)}
+              src={moviePosterURL}
               alt={movie.title}
               className={styles.movie_poster}
             />
             <div className={styles.movie_details}>
               <h2 className={styles.movie_title_wrapper}>
                 <span>{movie.title}</span>
-                <span className={styles.movie_rating}>{movie.rating}</span>
+                <span className={styles.movie_rating}>
+                  {movie.vote_average}
+                </span>
               </h2>
-              <div className={styles.movie_genre}>{movie.genre}</div>
+              <div className={styles.movie_genre}>
+                {movie.genres.join(', ')}
+              </div>
               <div className={styles.movie_year_wrapper}>
-                <span>{movie.year}</span>
-                <span>{movie.runtime}</span>
+                <span>{movie.release_date.split('-')[0]}</span>
+                <span>{movie.runtime && `${movie.runtime}m`}</span>
               </div>
               <div className={styles.movie_overview}>{movie.overview}</div>
             </div>
@@ -50,13 +56,13 @@ Header.propTypes = {
   movie: PropTypes.shape({
     id: PropTypes.number,
     title: PropTypes.string,
-    genre: PropTypes.string,
-    year: PropTypes.number,
-    poster: PropTypes.string,
+    genres: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+    release_date: PropTypes.string,
+    poster_path: PropTypes.string,
     url: PropTypes.string,
-    runtime: PropTypes.string,
+    runtime: PropTypes.number,
     overview: PropTypes.string,
-    rating: PropTypes.number,
+    vote_average: PropTypes.number,
   }),
   isMovieDetailsShown: PropTypes.bool.isRequired,
   toggleMovieDetails: PropTypes.func.isRequired,
@@ -66,13 +72,13 @@ Header.defaultProps = {
   movie: {
     id: 0,
     title: '',
-    genre: '',
-    year: 0,
-    poster: '',
+    genres: [],
+    release_date: '',
+    poster_path: '',
     url: '',
-    runtime: '',
+    runtime: 0,
     overview: '',
-    rating: 0,
+    vote_average: 0,
   },
 };
 

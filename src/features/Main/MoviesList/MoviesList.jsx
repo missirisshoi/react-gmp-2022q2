@@ -1,29 +1,34 @@
 import PropTypes from 'prop-types';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchMovies } from '../../../redux/actions';
 import MovieCard from './MovieCard';
 import styles from './MoviesList.module.scss';
 
-const MoviesList = ({ movies, getMovieId }) => (
-  <div className={styles.movies_list_wrapper}>
-    {movies.map((movie) => (
-      <MovieCard key={movie.id} movie={movie} getMovieId={getMovieId} />
-    ))}
-  </div>
-);
+const MoviesList = ({ getMovieId }) => {
+  const [moviesArray, setMoviesArray] = useState([]);
+  const dispatch = useDispatch();
+  const fetchedMovies = useSelector((store) => store);
+
+  useEffect(() => {
+    dispatch(fetchMovies());
+    /* eslint-disable-next-line react-hooks/exhaustive-deps */
+  }, []);
+
+  useEffect(() => {
+    setMoviesArray(fetchedMovies);
+  }, [fetchedMovies]);
+
+  return (
+    <div className={styles.movies_list_wrapper}>
+      {moviesArray.map((movie) => (
+        <MovieCard key={movie.id} movie={movie} getMovieId={getMovieId} />
+      ))}
+    </div>
+  );
+};
 
 MoviesList.propTypes = {
-  movies: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number,
-      title: PropTypes.string,
-      genre: PropTypes.string,
-      year: PropTypes.number,
-      poster: PropTypes.string,
-      url: PropTypes.string,
-      runtime: PropTypes.string,
-      overview: PropTypes.string,
-      rating: PropTypes.number,
-    })
-  ).isRequired,
   getMovieId: PropTypes.func.isRequired,
 };
 
