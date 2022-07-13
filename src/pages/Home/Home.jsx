@@ -1,16 +1,41 @@
+import { useCallback, useState } from 'react';
+import { useSelector } from 'react-redux';
 import ErrorBoundary from '../../base/ErrorBoundary';
 import Header from '../../features/Header';
 import Hr from '../../base/Hr';
 import Main from '../../features/Main';
 import Footer from '../../features/Footer';
+import useToggle from './utils';
 
-const Home = () => (
-  <ErrorBoundary>
-    <Header />
-    <Hr />
-    <Main />
-    <Footer />
-  </ErrorBoundary>
-);
+const Home = () => {
+  const [currentMovieId, setCurrentMovieId] = useState(0);
+  const [isMovieDetailsShown, toggleMovieDetails] = useToggle(false);
+
+  const movies = useSelector((store) => store);
+
+  const getMovie = () =>
+    [...movies].find((movie) => movie.id === currentMovieId);
+
+  const getMovieId = useCallback(
+    (id) => {
+      setCurrentMovieId(id);
+      toggleMovieDetails(true);
+    },
+    [toggleMovieDetails]
+  );
+
+  return (
+    <ErrorBoundary>
+      <Header
+        movie={getMovie()}
+        isMovieDetailsShown={isMovieDetailsShown}
+        toggleMovieDetails={toggleMovieDetails}
+      />
+      <Hr />
+      <Main getMovieId={getMovieId} />
+      <Footer />
+    </ErrorBoundary>
+  );
+};
 
 export default Home;
