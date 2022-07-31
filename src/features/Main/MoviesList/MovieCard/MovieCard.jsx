@@ -13,7 +13,11 @@ const MovieCard = ({ movie, getMovieId }) => {
 
   const moviePosterURL = movie.poster_path
     ? movie.poster_path
-    : require('../../../../../public/img/posters/pulp_fiction.png');
+    : require('../../../../../public/img/posters/image_not_found.png');
+
+  const handleImgError = (e) => {
+    e.target.src = require('../../../../../public/img/posters/image_not_found.png');
+  };
 
   const handleBtnClick = (type) => {
     toggleMovieMenu(false);
@@ -58,6 +62,7 @@ const MovieCard = ({ movie, getMovieId }) => {
         </div>
         <img
           src={moviePosterURL}
+          onError={handleImgError}
           alt={movie.title}
           className={styles.movie_poster}
           width="322"
@@ -191,12 +196,12 @@ MovieCard.propTypes = {
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
     release_date: PropTypes.string.isRequired,
-    genres: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+    genres: PropTypes.arrayOf(PropTypes.string),
     poster_path: PropTypes.string,
     url: PropTypes.string,
     runtime: PropTypes.number,
-    overview: PropTypes.string.isRequired,
-    vote_average: PropTypes.number.isRequired,
+    overview: PropTypes.string,
+    vote_average: PropTypes.number,
   }).isRequired,
   getMovieId: PropTypes.func.isRequired,
 };

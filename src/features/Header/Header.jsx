@@ -8,7 +8,11 @@ import SearchIcon from '../../base/SearchIcon';
 const Header = ({ movie, isMovieDetailsShown, toggleMovieDetails }) => {
   const moviePosterURL = movie.poster_path
     ? movie.poster_path
-    : require('../../../public/img/posters/pulp_fiction.png');
+    : require('../../../public/img/posters/image_not_found.png');
+
+  const handleImgError = (e) => {
+    e.target.src = require('../../../public/img/posters/image_not_found.png');
+  };
 
   return (
     <div className={styles.wrapper}>
@@ -21,6 +25,7 @@ const Header = ({ movie, isMovieDetailsShown, toggleMovieDetails }) => {
           <div className={styles.movie_detail_wrapper}>
             <img
               src={moviePosterURL}
+              onError={handleImgError}
               alt={movie.title}
               className={styles.movie_poster}
             />
@@ -32,7 +37,7 @@ const Header = ({ movie, isMovieDetailsShown, toggleMovieDetails }) => {
                 </span>
               </h2>
               <div className={styles.movie_genre}>
-                {movie.genres.join(', ')}
+                {movie.genres?.join(', ')}
               </div>
               <div className={styles.movie_year_wrapper}>
                 <span>{movie.release_date.split('-')[0]}</span>
@@ -54,10 +59,10 @@ const Header = ({ movie, isMovieDetailsShown, toggleMovieDetails }) => {
 
 Header.propTypes = {
   movie: PropTypes.shape({
-    id: PropTypes.number,
-    title: PropTypes.string,
-    genres: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-    release_date: PropTypes.string,
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    genres: PropTypes.arrayOf(PropTypes.string),
+    release_date: PropTypes.string.isRequired,
     poster_path: PropTypes.string,
     url: PropTypes.string,
     runtime: PropTypes.number,
@@ -70,10 +75,7 @@ Header.propTypes = {
 
 Header.defaultProps = {
   movie: {
-    id: 0,
-    title: '',
     genres: [],
-    release_date: '',
     poster_path: '',
     url: '',
     runtime: 0,
