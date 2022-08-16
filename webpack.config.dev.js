@@ -55,5 +55,6 @@ module.exports = {
     open: true,
     hot: false,
     liveReload: true,
+    historyApiFallback: true,
   }
 };
