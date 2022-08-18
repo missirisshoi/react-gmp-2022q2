@@ -6,7 +6,7 @@ const Search = () => (
     <form action="" className={styles.search_form}>
       <input
         type="text"
-        defaultValue="What do you want to watch?"
+        placeholder="What do you want to watch?"
         className={styles.input_txt}
       />
       <input
