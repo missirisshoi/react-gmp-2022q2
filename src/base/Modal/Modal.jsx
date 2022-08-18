@@ -7,7 +7,13 @@ const Modal = ({ headerText, showModal, setShowModal, children }) => {
   }
 
   return (
-    <div className={styles.modal_wrapper} onClick={() => setShowModal(false)}>
+    <div
+      className={styles.modal_wrapper}
+      onClick={(e) => {
+        e.stopPropagation();
+        setShowModal(false);
+      }}
+    >
       <div className={styles.modal_dialog} onClick={(e) => e.stopPropagation()}>
         <div className={styles.modal_header}>
           <h2 className={styles.modal_header_h2}>{headerText}</h2>
