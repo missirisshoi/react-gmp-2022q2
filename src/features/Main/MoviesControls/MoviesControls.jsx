@@ -19,11 +19,10 @@ const MoviesControls = ({ handleSort }) => (
         className={styles.sort_select}
         onChange={(e) => handleSort(e.target.value)}
       >
-        <option value="year" defaultValue>
+        <option value="release_date" defaultValue>
           Release date
         </option>
-        <option value="title">Title</option>
-        <option value="genre">Genre</option>
+        <option value="vote_average">Rating</option>
       </select>
     </div>
   </div>

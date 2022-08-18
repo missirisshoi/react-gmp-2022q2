@@ -1,5 +1,6 @@
 .genre_item {
   text-transform: uppercase;
+  cursor: pointer;
 }
 
 .genre_item_active {
@@ -8,4 +9,5 @@
   margin-bottom: -2px;
   z-index: 2;
   text-transform: uppercase;
+  cursor: pointer;
 }
