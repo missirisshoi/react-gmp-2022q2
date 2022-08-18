@@ -62,9 +62,8 @@ Header.propTypes = {
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
     genres: PropTypes.arrayOf(PropTypes.string),
-    release_date: PropTypes.string.isRequired,
+    release_date: PropTypes.string,
     poster_path: PropTypes.string,
-    url: PropTypes.string,
     runtime: PropTypes.number,
     overview: PropTypes.string,
     vote_average: PropTypes.number,
@@ -76,8 +75,8 @@ Header.propTypes = {
 Header.defaultProps = {
   movie: {
     genres: [],
+    release_date: '2000-01-01',
     poster_path: '',
-    url: '',
     runtime: 0,
     overview: '',
     vote_average: 0,

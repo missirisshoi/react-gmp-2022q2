@@ -11,10 +11,10 @@ const Home = () => {
   const [currentMovieId, setCurrentMovieId] = useState(0);
   const [isMovieDetailsShown, toggleMovieDetails] = useToggle(false);
 
-  const movies = useSelector((store) => store);
+  const movies = useSelector((store) => store.data);
 
   const getMovie = () =>
-    [...movies].find((movie) => movie.id === currentMovieId);
+    [...movies].find((movie) => movie.id === currentMovieId) || movies[0];
 
   const getMovieId = useCallback(
     (id) => {

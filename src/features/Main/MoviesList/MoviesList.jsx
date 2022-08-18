@@ -8,7 +8,7 @@ import styles from './MoviesList.module.scss';
 const MoviesList = ({ getMovieId }) => {
   const [moviesArray, setMoviesArray] = useState([]);
   const dispatch = useDispatch();
-  const fetchedMovies = useSelector((store) => store);
+  const fetchedMovies = useSelector((store) => store.data);
 
   useEffect(() => {
     dispatch(fetchMovies());
