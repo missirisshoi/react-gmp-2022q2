@@ -16,7 +16,7 @@ const Header = ({ movie, isMovieDetailsShown, toggleMovieDetails }) => {
 
   return (
     <div className={styles.wrapper}>
-      {isMovieDetailsShown ? (
+      {isMovieDetailsShown && movie.id ? (
         <>
           <div className={styles.nav_wrapper}>
             <Logo />

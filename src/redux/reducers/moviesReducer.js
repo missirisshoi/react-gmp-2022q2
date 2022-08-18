@@ -6,6 +6,7 @@ import {
   ADD_MOVIE,
   EDIT_MOVIE,
   DELETE_MOVIE,
+  UPDATE_MOVIES,
 } from '../actionTypes';
 
 const initialState = {
@@ -80,6 +81,7 @@ const moviesReducer = (state = initialState, action) => {
     case FILTER_MOVIES:
     case SORT_MOVIES:
     case FIND_MOVIES:
+    case UPDATE_MOVIES:
       return {
         data: action.payload.data,
         totalAmount: action.payload.totalAmount,

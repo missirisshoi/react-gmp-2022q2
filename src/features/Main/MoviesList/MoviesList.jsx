@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 import { fetchMovies } from '../../../redux/actions';
 import MovieCard from './MovieCard';
 import styles from './MoviesList.module.scss';
@@ -9,9 +10,12 @@ const MoviesList = ({ getMovieId }) => {
   const [moviesArray, setMoviesArray] = useState([]);
   const dispatch = useDispatch();
   const fetchedMovies = useSelector((store) => store.data);
+  const { params } = useParams();
 
   useEffect(() => {
-    dispatch(fetchMovies());
+    if (!params) {
+      dispatch(fetchMovies());
+    }
     /* eslint-disable-next-line react-hooks/exhaustive-deps */
   }, []);
 
