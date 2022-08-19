@@ -1,0 +1,32 @@
+.movie_card {
+  width: 322px;
+  height: 530px;
+}
+
+.movie_poster {
+  margin-bottom: 15px;
+}
+
+.movie_details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.movie_title {
+  font-size: 18px;
+  opacity: 70%;
+}
+
+.movie_year {
+  padding: 5px 8px;
+  font-size: 17px;
+  opacity: 70%;
+  border: 1px solid;
+  border-radius: 4px;
+}
+
+.movie_genre {
+  font-size: 14px;
+  opacity: 50%;
+}
