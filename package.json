@@ -7,6 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack serve --node-env development",
     "build": "webpack --node-env production",
+    "dev": "next dev",
     "lint": "eslint --ext .js,.jsx ./src",
     "lint:fix": "eslint --fix --ext .js,.jsx ./src",
     "prettify:check": "prettier --check ./src",
@@ -26,6 +27,7 @@
   "homepage": "https://github.com/missirisshoi/react-gmp-2022q2#readme",
   "dependencies": {
     "formik": "^2.2.9",
+    "next": "^12.2.5",
     "prop-types": "^15.8.1",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
