@@ -1,18 +1,12 @@
 import Footer from '../../src/features/Footer';
 import SimpleHeader from '../../src/features/Header/SimpleHeader/SimpleHeader';
-import SimpleMovieCard from '../../src/features/Main/MoviesList/SimpleMovieCard';
+import SimpleMain from '../../src/features/Main/SimpleMain/SimpleMain';
 
 const SearchPage = ({movies}) => {
-  console.log('movies', movies);
   return (
     <>
       <SimpleHeader />
-      <div>Movies</div>
-      <ul>
-        {movies?.map((movie) => (
-          <SimpleMovieCard key={movie.id} movie={movie} />
-        ))}
-      </ul>
+      <SimpleMain movies={movies} />
       <Footer />
     </>
   );
