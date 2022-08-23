@@ -28,6 +28,10 @@ const MovieCard = ({ movie, getMovieId }) => {
     ? movie.poster_path
     : require('../../../../../public/img/posters/image_not_found.png');
 
+  const releaseYear = movie.release_date?.split('-')[0];
+
+  const genres = movie.genres?.join(', ');
+
   const handleImgError = (e) => {
     e.target.src = require('../../../../../public/img/posters/image_not_found.png');
   };
@@ -94,7 +98,7 @@ const MovieCard = ({ movie, getMovieId }) => {
       setIsDeleted(true);
       setTimeout(() => {
         setIsDeleted(false);
-      }, 10000);
+      }, 3000);
     },
   });
 
@@ -127,12 +131,12 @@ const MovieCard = ({ movie, getMovieId }) => {
           height="455"
         />
         <div className={styles.movie_details}>
-          <span className={styles.movie_title}>{movie.title}</span>
-          <span className={styles.movie_year}>
-            {movie.release_date?.split('-')[0]}
+          <span className={styles.movie_title} data-test-id="movie-title">
+            {movie.title}
           </span>
+          <span className={styles.movie_year}>{releaseYear}</span>
         </div>
-        <div className={styles.movie_genre}>{movie.genres?.join(', ')}</div>
+        <div className={styles.movie_genre}>{genres}</div>
       </div>
       <Modal
         headerText="Edit movie"

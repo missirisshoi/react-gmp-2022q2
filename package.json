@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start": "webpack serve --node-env development",
     "build": "webpack --node-env production",
+    "cypress": "cypress open",
     "lint": "eslint --ext .js,.jsx ./src",
     "lint:fix": "eslint --fix --ext .js,.jsx ./src",
     "prettify:check": "prettier --check ./src",
@@ -30,6 +31,8 @@
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-redux": "^8.0.2",
+    "react-router-dom": "^6.3.0",
+    "react-test-renderer": "^18.2.0",
     "redux": "^4.2.0",
     "redux-thunk": "^2.4.1",
     "yup": "^0.32.11"
@@ -38,17 +41,26 @@
     "@babel/core": "^7.18.2",
     "@babel/preset-env": "^7.18.2",
     "@babel/preset-react": "^7.17.12",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.3.0",
+    "babel-jest": "^28.1.3",
     "babel-loader": "^8.2.5",
     "css-loader": "^6.7.1",
+    "cypress": "^10.6.0",
     "eslint": "^8.16.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-cypress": "^2.12.1",
+    "eslint-plugin-jest": "^26.8.3",
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-react": "^7.30.0",
     "eslint-plugin-react-hooks": "^4.5.0",
     "eslint-webpack-plugin": "^3.1.1",
     "html-webpack-plugin": "^5.5.0",
     "husky": "^8.0.1",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^28.1.3",
+    "jest-environment-jsdom": "^28.1.3",
     "mini-css-extract-plugin": "^2.6.0",
     "prettier": "2.6.2",
     "sass": "^1.52.1",
@@ -57,5 +69,14 @@
     "webpack": "^5.72.1",
     "webpack-cli": "^4.9.2",
     "webpack-dev-server": "^4.9.0"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(css|scss)$": "identity-obj-proxy"
+    },
+    "testEnvironment": "jsdom",
+    "setupFilesAfterEnv": [
+      "./setupTests.js"
+    ]
   }
 }

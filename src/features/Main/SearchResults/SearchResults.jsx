@@ -6,8 +6,9 @@ const SearchResults = () => {
 
   return (
     <div className={styles.search_results_wrapper}>
-      <span className={styles.search_results_span}>{totalAmount}</span> movies
-      found
+      <span className={styles.search_results_span} data-test-id="search-amount">
+        {totalAmount}
+      </span> movies found
     </div>
   );
 };

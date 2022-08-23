@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`404 component matches snapshot 1`] = `
+Array [
+  <div
+    className="not_found"
+  >
+    404. The page is not found.
+  </div>,
+  <div
+    className="footer_wrapper"
+  >
+    <span
+      className="logo_txt"
+    >
+      <b>
+        netflix
+      </b>
+      roulette
+    </span>
+  </div>,
+]
+`;

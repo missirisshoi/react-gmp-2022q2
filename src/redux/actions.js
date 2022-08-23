@@ -6,6 +6,7 @@ import {
   ADD_MOVIE,
   EDIT_MOVIE,
   DELETE_MOVIE,
+  UPDATE_MOVIES,
 } from './actionTypes';
 
 export function fetchMovies() {
@@ -99,5 +100,24 @@ export function deleteMovie(id) {
     });
     dispatch({ type: DELETE_MOVIE });
     dispatch(fetchMovies());
+  };
+}
+
+export function updateMoviesList(search, sort, filter) {
+  let url = 'http://localhost:4000/movies?';
+  if (search) {
+    url += `search=${search}&&searchBy=title&`;
+  }
+  if (sort) {
+    url += `sortBy=${sort}&sortOrder=desc&`;
+  }
+  if (filter && filter !== 'All') {
+    url += `filter=${filter}&`;
+  }
+  url += 'limit=15';
+  return async (dispatch) => {
+    const res = await fetch(url);
+    const json = await res.json();
+    dispatch({ type: UPDATE_MOVIES, payload: json });
   };
 }
