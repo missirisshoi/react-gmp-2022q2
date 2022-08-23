@@ -79,6 +79,7 @@ const Search = () => {
           placeholder="What do you want to watch?"
           className={styles.input_txt}
           value={formik.values.movie_title}
+          data-test-id="search-field"
         />
         <input
           type="submit"
@@ -86,6 +87,7 @@ const Search = () => {
           onClick={formik.handleSubmit}
           className={styles.input_btn}
           disabled={formik.isSubmitting}
+          data-test-id="search-button"
         />
       </form>
     </div>

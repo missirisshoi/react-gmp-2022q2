@@ -131,7 +131,9 @@ const MovieCard = ({ movie, getMovieId }) => {
           height="455"
         />
         <div className={styles.movie_details}>
-          <span className={styles.movie_title}>{movie.title}</span>
+          <span className={styles.movie_title} data-test-id="movie-title">
+            {movie.title}
+          </span>
           <span className={styles.movie_year}>{releaseYear}</span>
         </div>
         <div className={styles.movie_genre}>{genres}</div>
